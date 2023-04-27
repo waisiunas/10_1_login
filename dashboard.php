@@ -5,6 +5,10 @@ session_start();
 if(!isset($_SESSION['user_id'])) {
     header('location: ./index.php');
 }
+$user_id = $_SESSION['user_id'];
+$sql = "SELECT * FROM `users` WHERE `id` = $user_id";
+$result = $conn->query($sql);
+$user = $result->fetch_assoc();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,7 +38,12 @@ if(!isset($_SESSION['user_id'])) {
                         </div>
                     </div>
                     <div class="card-body">
-                        <p class="lead">Welcome to the page!</p>
+                        <p class="lead">Welcome <strong>
+                            <?php 
+                            // echo $_SESSION['user_name'];
+                            echo $user['name'];
+                             ?>
+                        </strong> to the page!</p>
                     </div>
                 </div>
             </div>

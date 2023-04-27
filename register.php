@@ -1,6 +1,11 @@
 <?php require_once('./database/connection.php'); ?>
 
 <?php
+session_start();
+if(isset($_SESSION['user_id'])) {
+    header('location: ./dashboard.php');
+}
+
 $name = $email = "";
 if (isset($_POST['submit'])) {
     // echo "<pre>";

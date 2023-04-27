@@ -1,6 +1,10 @@
 <?php require_once('./database/connection.php'); ?>
 
 <?php
+session_start();
+if(isset($_SESSION['user_id'])) {
+    header('location: ./dashboard.php');
+}
 
 $email = "";
 
@@ -18,8 +22,8 @@ if (isset($_POST['submit'])) {
         $result = $conn->query($sql);
         $user = $result->fetch_assoc();
         if($user) {
-            session_start();
             $_SESSION['user_id'] = $user['id'];
+            // $_SESSION['user_name'] = $user['name'];
             header('location: ./dashboard.php');
         } else {
             $error = "Invalid login credentials!";
