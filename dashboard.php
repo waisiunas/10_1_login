@@ -33,6 +33,7 @@ $user = $result->fetch_assoc();
                                 <h5>Dashboard</h5>
                             </div>
                             <div class="col text-end">
+                                <a href="./edit.php?id=<?php echo $user_id; ?>" class="btn btn-outline-primary">Edit</a>
                                 <a href="./logout.php" class="btn btn-outline-danger">Logout</a>
                             </div>
                         </div>
